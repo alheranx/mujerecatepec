@@ -57,7 +57,7 @@ try {
 
     <div class="container">
         <div class="row mb-5">
-            <div class="col-12 col-md-4 offset-md-4">
+            
                 
 
             <?php
@@ -67,20 +67,30 @@ try {
             
 
 
-            while($rs=$stmt->fetch()){
+            while($rs=$stmt->fetch()){ ?>
 
-                echo var_dump($rs);
-                // $rs['total'] += $rs['qty']*$rs['price'];
-                // $total += $rs['total'];
-                // $a[] = $rs;
-            }
-            ?>
+                <div class="col-12 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+
+                            <p>
+                                <b>Nombre: </b><?php echo $rs['nombre']; ?><br>
+                                <b>Dirección: </b><?php echo $rs['direccion']; ?><br>
+                                <b>Colonia: </b><?php echo $rs['colonia']; ?><br>
+                                <b>E-mail: </b><?php echo $rs['email']; ?><br>
+                                <b>Teléfono: </b><?php echo $rs['telefono']; ?><br>
+                                <b>C.P.: </b><?php echo $rs['cp']; ?>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+                
+            <?php } ?>
 
 
 
             
-
-            </div>
         </div>
     </div>
 
