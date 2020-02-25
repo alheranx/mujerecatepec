@@ -61,38 +61,23 @@ try {
                 
 
             <?php
-            $nombre = $_POST['nombre'];
-            $telefono = $_POST['telefono'];
-            $email = $_POST['email'];
-            $direccion = $_POST['direccion'];
-            $colonia = $_POST['colonia'];
-            $cp = $_POST['cp'];
-
-
-            $mensaje = "
-            Nombre: ".$nombre."<br>
-            telefono: ".$telefono."<br>
-            email: ".$email."<br>
-            direccion: ".$direccion."<br>
-            colonia: ".$colonia."<br>
-            cp: ".$cp."<br>
-            " ;
-
-            // echo $mensaje;
-
-
-            $query = "insert into mujeres (nombre, email, telefono, direccion, cp, colonia) values ('$nombre', '$email', '$telefono', '$direccion', '$cp', '$colonia');";
-
+            $query = "SELECT * FROM mujeres";
             $stmt= $pdo->prepare($query);
             $stmt->execute();
+            
+
+
+            while($rs=$stmt->fetch()){
+
+                echo var_dump($rs);
+                // $rs['total'] += $rs['qty']*$rs['price'];
+                // $total += $rs['total'];
+                // $a[] = $rs;
+            }
             ?>
 
 
 
-            
-                <div class="alert alert-success">
-                    Se envió correctamente tu registro, nos pondremos en contacto contigo.
-                </div>
             
 
             </div>
