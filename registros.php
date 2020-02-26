@@ -55,8 +55,8 @@ try {
 
 
 
-    <div class="container">
-        <div class="row mb-5">
+    <div class="container-fluid">
+        <div class="row mb-5 p-3">
             
                 
 
@@ -64,32 +64,66 @@ try {
             $query = "SELECT * FROM mujeres";
             $stmt= $pdo->prepare($query);
             $stmt->execute();
+            ?>
             
-
-
-            while($rs=$stmt->fetch()){ ?>
-
-                <div class="col-12 mb-3">
-                    <div class="card">
-                        <div class="card-body">
-
-                            <p>
-                                <b>Nombre: </b><?php echo $rs['nombre']; ?><br>
-                                <b>Dirección: </b><?php echo $rs['direccion']; ?><br>
-                                <b>Colonia: </b><?php echo $rs['colonia']; ?><br>
-                                <b>E-mail: </b><?php echo $rs['email']; ?><br>
-                                <b>Teléfono: </b><?php echo $rs['telefono']; ?><br>
-                                <b>C.P.: </b><?php echo $rs['cp']; ?>
-                            </p>
-
-                        </div>
-                    </div>
-                </div>
+            
+            
+            <table class="table table-striped bg-white shadow table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                    <th scope="col">Folio</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Colonia</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">C.P.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
                 
-            <?php } ?>
+                <?php
+                while($rs=$stmt->fetch()){ ?>
 
 
+                        <tr>
+                            <td scope="row"><b class="text-primary"><?php echo sprintf('%05d', $rs['id']);  ?></b></td>
+                            <td><?php echo $rs['nombre']; ?></td>
+                            <td><?php echo $rs['direccion']; ?></td>
+                            <td><?php echo $rs['colonia']; ?></td>
+                            <td><?php echo $rs['email']; ?></td>
+                            <td><?php echo $rs['telefono']; ?></td>
+                            <td><?php echo $rs['cp']; ?></td>
+                        </tr>
 
+
+                        <!-- <div class="col-12 mb-3">
+                            <div class="card">
+
+                                <div class="card-header">
+                                    Folio: <b class="text-primary"><?php echo sprintf('%05d', $rs['id']);  ?></b>
+                                </div>
+                                <div class="card-body">
+
+                                    <p>
+                                        <b>Nombre: </b><?php echo $rs['nombre']; ?><br>
+                                        <b>Dirección: </b><?php echo $rs['direccion']; ?><br>
+                                        <b>Colonia: </b><?php echo $rs['colonia']; ?><br>
+                                        <b>E-mail: </b><?php echo $rs['email']; ?><br>
+                                        <b>Teléfono: </b><?php echo $rs['telefono']; ?><br>
+                                        <b>C.P.: </b><?php echo $rs['cp']; ?>
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div> -->
+                        
+                    <?php } ?>
+
+
+                </tbody>
+            </table>
             
         </div>
     </div>
